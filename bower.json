@@ -1,0 +1,12 @@
+{
+  "name": "AngularTest01",
+  "version": "0.0.0",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "handlebars" : "4.0.5",
+    "angular": "1.4.8",
+    "ngDraggable": "0.1.8"
+  }
+}
