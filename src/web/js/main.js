@@ -5,10 +5,10 @@ angular.module('config', ['RecursionHelper', 'AtConfigService'])
         $scope.config = {
             children: []
         };
-        $scope.expandChildren = function(event) {
+        $scope.expandChildren = function(data) {
 
         };
-        $scope.addChildren = function(event) {
+        $scope.addChildren = function(data) {
 
         };
         $scope.openFirstNode = function() {
@@ -23,13 +23,35 @@ angular.module('config', ['RecursionHelper', 'AtConfigService'])
             templateUrl: '/static/templates/config-node.html',
             scope: {
                 config: '=',
-                add: '&onAdd',
-                expand: '&onExpand'
+                onAdd: '&',
+                onExpand: '&'
+            },
+            controller:function ($scope, $attrs) {
+                $scope.expandChildren = function (id) {
+                    console.log('$scope.expandChildren: ' + id);
+                    $scope.onExpand({id:id});
+                };
+                $scope.addChild = function (id) {
+                    console.log('$scope.addChild: ' + id);
+                    $scope.onAdd({id:id});
+                };
+            },
+            link: function() {
+
             },
             compile: function(element) {
                 return RecursionHelper.compile(element, function(scope, iElement, iAttrs, controller, transcludeFn) {
 
                 })
+            }
+        }
+    })
+    .directive('configData', function(RecursionHelper) {
+        return {
+            scope: {
+                config: '=',
+                addChild: '&',
+                expandChildren: '&'
             }
         }
     });

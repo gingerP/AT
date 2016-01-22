@@ -8,7 +8,8 @@ var config = {
     handler: 'data_handler',
     attribute: 'data_attr',
     style: 'data_style',
-    formatter: 'formatter'
+    formatter: 'formatter',
+    children: []
 };
 ConstructorController = function() {};
 ConstructorController.prototype.get = function(req, res, callback) {

@@ -4,9 +4,9 @@
     <link rel="stylesheet" href="/static/css/app.css">
 </head>
 <body ng-app="config">
-    <div class="tree-container" ng-controller="TreeController as ctrl">
+    <div class="tree-container" ng-controller="TreeController">
         <a href ng-click="openFirstNode()">Load Tree!</a>
-        <config-tree config="config" on-expand="expandChildren()" on-add="addChildren()"></config-tree>
+        <config-tree config="config" on-expand="expandChildren(id)" on-add="addChildren(id)"></config-tree>
     </div>
     <script type="text/javascript" src="/static/bower/jquery/dist/jquery.js"></script>
     <script type="text/javascript" src="/static/bower/angular/angular.min.js"></script>
