@@ -6,12 +6,14 @@
 <body ng-app="config">
     <div class="tree-container" ng-controller="TreeController">
         <a href ng-click="openFirstNode()">Load Tree!</a>
-        <config-tree config="config" on-expand="expandChildren(id)" on-add="addChildren(id)"></config-tree>
+        <config-tree config="config" on-expand="expandChildren(id)" on-add="addChild(id)"></config-tree>
     </div>
     <script type="text/javascript" src="/static/bower/jquery/dist/jquery.js"></script>
-    <script type="text/javascript" src="/static/bower/angular/angular.min.js"></script>
+    <script type="text/javascript" src="/static/bower/angular/angular.js"></script>
+    <script type="text/javascript" src="/static/bower/ngDraggable/ngDraggable.js"></script>
     <script type="text/javascript" src="/static/js/angular-recursion.js"></script>
-    <script type="text/javascript" src="/static/js/config-service.js"></script>
+    <script type="text/javascript" src="/static/js/service/config-service.js"></script>
+    <script type="text/javascript" src="/static/js/directive/config-tree.js"></script>
     <script type="text/javascript" src="/static/js/main.js"></script>
 </body>
 </html>

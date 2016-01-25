@@ -1,24 +1,22 @@
-<ul class="config-level-list">
-    <li ng-repeat="child in config.children">
-        <config-data addChild="addChild(config.name)" expandChildren="expandChildren(child.name)">
-            <form class="config-container">
-                <div class="config-toolbar">
-                    <button type="button" ng-click="">-</button>
-                    <button type="button">o</button>
-                    <button type="button">×</button>
-                </div>
-                <input type="text" placeholder="Name" ng-model="child.name">
-                <input type="text" placeholder="Selector" ng-model="child.selector">
-                <input type="text" placeholder="Handler" ng-model="child.handler">
-                <input type="text" placeholder="Attribute" ng-model="child.attribute">
-                <input type="text" placeholder="Style" ng-model="child.style">
-                <input type="text" placeholder="Formatter" ng-model="child.formatter">
-                <div class="config-fotter">
-                    <button type="button" ng-click="addChild()">Add</button>
-                    <button type="button" ng-click="expandChildren()">Exp</button>
-                </div>
-            </form>
-        </config-data>
-        <!--<config-tree config="config" expand="expandChildren()" add="addChildren()"></config-tree>-->
-    </li>
-</ul>
+<form class="config-container max-size">
+    <div class="config-header">
+        <div class="config-title">{{child.name}}</div>
+        <div class="config-toolbar">
+            <button type="button" class="move-btn" ng-drag-handle>||||</button>
+            <button type="button" class="size-btn" ng-click="changeSize()">-</button>
+            <button type="button">×</button>
+        </div>
+    </div>
+    <div class="inputs">
+        <input type="text" placeholder="Name" ng-model="child.name">
+        <input type="text" placeholder="Selector" ng-model="child.selector">
+        <input type="text" placeholder="Handler" ng-model="child.handler">
+        <input type="text" placeholder="Attribute" ng-model="child.attribute">
+        <input type="text" placeholder="Style" ng-model="child.style">
+        <input type="text" placeholder="Formatter" ng-model="child.formatter">
+    </div>
+    <div class="config-footer">
+        <button type="button" ng-click="add()">Add</button>
+        <button type="button" ng-click="expand()">Exp</button>
+    </div>
+</form>

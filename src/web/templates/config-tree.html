@@ -1,0 +1,10 @@
+<ul class="config-level-list">
+    <li ng-repeat="child in config.children" ng-drop="true" ng-drop-success="onDropComplete($data,$event)">
+        <config-data class="config-data" add="addChild(child)" expand="expandChildren(child)" child="child" ng-drag="true"
+                     ng-drag-data="child"
+                     ng-drag-success="onDragComplete($data,$event)"
+                     ng-drag-start="onDragStart($data,$event)"
+                     ng-center-anchor="false"></config-data>
+        <config-tree config="child" on-expand="expandChildren(id)" on-add="addChild(id)"></config-tree>
+    </li>
+</ul>

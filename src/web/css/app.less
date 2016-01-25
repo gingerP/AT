@@ -1,3 +1,12 @@
+@font-face {
+    font-family: Oswald;
+    src: url('/static/fonts/Oswald-Light.ttf');
+}
+@font-face {
+    font-family: Droid;
+    src: url('/static/fonts/DroidSansMono.ttf');
+}
+
 body {
     background-color: #F7F7F7;
 }
@@ -8,16 +17,67 @@ body {
 .config-container {
     background-color: #fff;
     position: relative;
-    padding: 30px 10px 10px;
+    padding: 10px;
     box-shadow: 1px 2px 3px #C1C1C1;
     display: table;
-    input {
-        display: block;
-        margin: 5px;
+    .inputs {
+        input {
+            width: 100%;
+            display: block;
+            margin: 5px 0;
+        }
+    }
+    .config-header {
+        background-color: #D2ECD2;
+        min-height: 30px;
+        margin-bottom: 5px;
+        position: relative;
+        padding: 5px;
+    }
+    .config-title {
+        line-height: 30px;
+        margin-right: 100px;
+        word-break: break-all;
+        max-width: 200px;
+        font-family: Droid;
     }
     .config-toolbar {
         position: absolute;
         top: 5px;
-        right: 15px;
+        right: 5px;
     }
+    .config-footer {
+
+    }
+    .config-footer,
+    .inputs {
+        transition: max-height 300ms;
+        overflow: hidden;
+        max-height: 1000px;
+    }
+    &.min-size {
+        .config-footer,
+        .inputs {
+            max-height: 0px;
+        }
+    }
+    &.max-size {
+        .config-footer,
+        .inputs {
+            max-height: 1000px;
+        }
+    }
+}
+
+.move-btn {
+    cursor: move;
+}
+
+.config-data {
+    display: block;
+    transition: transform 100ms;
+}
+
+.drag-enter {
+    background-color: #FFD4A1;
 }

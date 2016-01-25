@@ -1,57 +1,36 @@
 'use strict'
 
-angular.module('config', ['RecursionHelper', 'AtConfigService'])
+angular.module('config', ['RecursionHelper', 'AtConfigService', 'AtConfigTree', 'ngDraggable'])
     .controller('TreeController', ['$scope', 'AtConfigService', function($scope, atConfigService) {
         $scope.config = {
             children: []
         };
-        $scope.expandChildren = function(data) {
-
+        $scope.expandChildren = function(node) {
+            atConfigService.get().then(function(data) {
+                node.children.push(data);
+                console.log('success');
+            });
         };
-        $scope.addChildren = function(data) {
-
+        $scope.addChild = function(node) {
+            atConfigService.get().then(function(data) {
+                node.children.push(data);
+                console.log('success');
+            });
         };
         $scope.openFirstNode = function() {
             atConfigService.get().then(function(data) {
                 $scope.config.children.push(data);
                 console.log('success');
             });
-        }
-    }])
-    .directive('configTree', function(RecursionHelper) {
-        return {
-            templateUrl: '/static/templates/config-node.html',
-            scope: {
-                config: '=',
-                onAdd: '&',
-                onExpand: '&'
-            },
-            controller:function ($scope, $attrs) {
-                $scope.expandChildren = function (id) {
-                    console.log('$scope.expandChildren: ' + id);
-                    $scope.onExpand({id:id});
-                };
-                $scope.addChild = function (id) {
-                    console.log('$scope.addChild: ' + id);
-                    $scope.onAdd({id:id});
-                };
-            },
-            link: function() {
-
-            },
-            compile: function(element) {
-                return RecursionHelper.compile(element, function(scope, iElement, iAttrs, controller, transcludeFn) {
-
-                })
-            }
-        }
-    })
-    .directive('configData', function(RecursionHelper) {
-        return {
-            scope: {
-                config: '=',
-                addChild: '&',
-                expandChildren: '&'
-            }
-        }
-    });
+        };
+        /************************************************/
+        $scope.onDragStart=function(data,evt){
+            console.log("drag start success, data:", data);
+        };
+        $scope.onDragComplete=function(data,evt){
+            console.log("drag success, data:", data);
+        };
+        $scope.onDropComplete=function(data,evt){
+            console.log("drop success, data:", data);
+        };
+    }]);
